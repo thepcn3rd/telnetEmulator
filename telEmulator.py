@@ -3,6 +3,7 @@
 import socket
 import sys
 import thread
+from datetime import datetime
 	
 host = ''
 port = 23
@@ -67,7 +68,8 @@ def handleClient(c, addr):
 		print "Command: " + commands.decode('hex')
 		ipInfo = str(addr)
 		f = open('outputInfo.txt', 'a')
-		f.write('IP:' + ipInfo + '|U:' + username[36:-4].decode('hex') + '|P:' + password.decode('hex') + '|C:' + commands.decode('hex') + '\n')
+		#f.write('IP:' + ipInfo + '|U:' + username[36:-4].decode('hex') + '|P:' + password.decode('hex') + '|C:' + commands.decode('hex') + '\n')
+		f.write('T:' + str(datetime.now()) + '|IP:' + ipInfo + '|U:' + username[36:-4].decode('hex') + '|P:' + password.decode('hex') + '|C:' + commands.decode('hex') + '\n')
 		f.close()
 		loop += 1
 	c.close()
